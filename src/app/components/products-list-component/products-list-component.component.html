@@ -1,1 +1,11 @@
-<p>products-list-component works!</p>
+<div class="container">
+  <h2>Listado de Productos</h2>
+  <div class="row mb-8 pt-2">
+    <div
+      class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4"
+      *ngFor="let product of products"
+    >
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

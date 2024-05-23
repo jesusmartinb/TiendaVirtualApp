@@ -1,0 +1,32 @@
+<div class="card">
+  <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="marca">{{ product.brand }}</p>
+    <p class="card-text">{{ product.description }}</p>
+    <p class="descuento">
+      <span class="porcentaje border rounded p-1 mx-3"
+        >Descuento: {{ product.discountPercentage }}%</span
+      >
+    </p>
+    <p class="card-text price">Precio final: {{ product.price }}€</p>
+    <p
+      class="card-text stock"
+      [ngClass]="{
+        green: product.stock > 5,
+        orange: product.stock > 0 && product.stock <= 5,
+        red: product.stock === 0
+      }"
+    >
+      Unidades Disponibles: {{ product.stock }}
+    </p>
+    <div class="botones">
+      <a class="btn btn-primary">Agregar al Carrito</a>
+      <a
+        class="btn btn-primary"
+        [routerLink]="['/productos-detalle', product.id, product.stock]"
+        >Más...</a
+      >
+    </div>
+  </div>
+</div>

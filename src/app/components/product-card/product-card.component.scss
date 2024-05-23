@@ -1,0 +1,25 @@
+.card {
+  min-height: 680px
+}
+
+.btn {
+  display: inline-block;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.green {
+  background-color: rgb(67, 227, 67);
+}
+
+.orange {
+  background-color: rgb(255, 165, 0);
+}
+
+.red {
+  background-color: rgb(255, 0, 0);
+}
