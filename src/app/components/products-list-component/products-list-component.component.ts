@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/product';
 import { ProductsService } from '../../services/products.service';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { SharingDataService } from '../../services/sharing-data.service';
 
 @Component({
   selector: 'app-products-list-component',
@@ -16,7 +17,8 @@ export class ProductsListComponentComponent implements OnInit {
   public products: Product[] = [];
 
   constructor(
-    private productService: ProductsService
+    private productService: ProductsService,
+    private sharingDataService: SharingDataService
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class ProductsListComponentComponent implements OnInit {
   }
 
   addCart(product: Product) {
-    alert('Producto agregado al carrito');
+    this.sharingDataService.productEventEmitter.emit(product);
   }
 
 }

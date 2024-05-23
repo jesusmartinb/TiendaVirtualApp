@@ -36,7 +36,8 @@
             class="nav-link"
             [routerLink]="['/carrito']"
             routerLinkActive="active"
-            >Carrito</a
+            [state]="items"
+            >Carrito ({{ items.length }})</a
           >
         </li>
       </ul>

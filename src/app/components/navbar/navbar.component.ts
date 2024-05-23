@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CartItem } from '../../interfaces/cart-item';
 
 @Component({
   selector: 'app-navbar',
@@ -9,5 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+  @Input() items: CartItem[] = [];
 
 }
