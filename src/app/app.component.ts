@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   public product!: Product;
   public state: any;
 
+  public total: number = 0;
+
   constructor(
     private sharingDataService: SharingDataService,
     private router: Router
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = JSON.parse(localStorage.getItem('cart') || '[]');
+    this.calculateTotal();
     this.addCart(this.product);
   }
 
@@ -46,10 +49,11 @@ export class AppComponent implements OnInit {
         this.items = [... this.items, { product: { ...product }, quantity: 1 }];
       }
 
+      this.calculateTotal();
       this.saveSession();
 
       this.router.navigate(['/productos'], {
-        state:  {items: this.items}
+        state:  {items: this.items, total: this.total}
       });
 
     })
@@ -57,5 +61,9 @@ export class AppComponent implements OnInit {
 
   saveSession(): void{
     sessionStorage.setItem('cart', JSON.stringify(this.items));
+  }
+
+  calculateTotal(): void {
+    this.total = this.items.reduce((accumulator, item) => accumulator + item.quantity * item.product.price, 0);
   }
 }

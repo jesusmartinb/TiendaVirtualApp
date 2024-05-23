@@ -15,13 +15,21 @@ export class CarritoComponent {
 
   @Input() items: CartItem[] = [];
 
+  public total: number = 0;
+
   constructor(
     private router: Router
   ) {
     this.items = this.router.getCurrentNavigation()?.extras?.state!['items'];
+    this.total = this.router.getCurrentNavigation()?.extras?.state!['total'];
   }
 
   ngOnInit(): void {
     this.items = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    this.calculateTotal();
+  }
+
+  calculateTotal(): void {
+    this.total = this.items.reduce((accumulator, item) => accumulator + item.quantity * item.product.price, 0);
   }
 }
