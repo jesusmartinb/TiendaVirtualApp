@@ -1,1 +1,35 @@
-<p>product-detail works!</p>
+<div class="container">
+  <h2>Detalle del Producto</h2>
+  <div class="row">
+    <div class="col-12">
+      <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
+    </div>
+    <div class="col-12">
+      <h3>{{ product.title }}</h3>
+      <p class="marca">{{ product.brand }}</p>
+      <p>{{ product.description }}</p>
+      <p class="descuento">
+        <span class="porcentaje border rounded p-1 mx-3"
+          >Descuento: {{ product.discountPercentage }}%</span
+        >
+      </p>
+      <p class="card-text price">
+        Precio final: {{ product.price }}€ IVA Incluido.
+      </p>
+      <p
+        class="card-text stock"
+        [ngClass]="{
+          green: product.stock > 5,
+          orange: product.stock > 0 && product.stock <= 5,
+          red: product.stock === 0
+        }"
+      >
+        Unidades Disponibles: {{ product.stock }}
+      </p>
+      <div class="botones">
+        <a class="btn btn-primary">Agregar al Carrito</a>
+        <a class="btn btn-primary">Volver</a>
+      </div>
+    </div>
+  </div>
+</div>
