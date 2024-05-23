@@ -26,4 +26,8 @@ export class ProductsListComponentComponent implements OnInit {
     });
   }
 
+  addCart(product: Product) {
+    alert('Producto agregado al carrito');
+  }
+
 }
