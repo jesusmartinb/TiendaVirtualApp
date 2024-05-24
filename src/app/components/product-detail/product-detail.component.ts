@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SharingDataService } from '../../services/sharing-data.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,10 +16,13 @@ export class ProductDetailComponent implements OnInit {
 
   public product: any = {};
 
+  @Output() productEventEmitter: EventEmitter<Product> = new EventEmitter();
+
   constructor(
     private productsService: ProductsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sharingDataService: SharingDataService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +34,10 @@ export class ProductDetailComponent implements OnInit {
         });
       }
     )
+  }
+
+  addCart(product: Product) {
+    this.sharingDataService.productEventEmitter.emit(product);
   }
 
   volver() {

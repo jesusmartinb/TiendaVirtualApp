@@ -27,7 +27,9 @@
         Unidades Disponibles: {{ product.stock }}
       </p>
       <div class="botones">
-        <a class="btn btn-primary">Agregar al Carrito</a>
+        <a class="btn btn-primary" (click)="addCart(product)"
+          >Agregar al Carrito</a
+        >
         <a class="btn btn-primary" (click)="volver()">Volver</a>
       </div>
     </div>
