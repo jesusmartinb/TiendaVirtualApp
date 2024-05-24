@@ -18,7 +18,8 @@ export class CarritoComponent {
   public total: number = 0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private sharingDataService: SharingDataService
   ) {
     this.items = this.router.getCurrentNavigation()?.extras?.state!['items'];
     this.total = this.router.getCurrentNavigation()?.extras?.state!['total'];
@@ -31,5 +32,9 @@ export class CarritoComponent {
 
   calculateTotal(): void {
     this.total = this.items.reduce((accumulator, item) => accumulator + item.quantity * item.product.price, 0);
+  }
+
+  removeItem(id: number): void {
+    this.sharingDataService.idProductEventEmitter.emit(id);
   }
 }

@@ -20,7 +20,7 @@
         <td>{{ item.quantity }}</td>
         <td>{{ item.product.price * item.quantity }}</td>
         <td>
-          <button>Eliminar</button>
+          <button (click)="removeItem(item.product.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
