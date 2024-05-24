@@ -5,11 +5,12 @@ import { CartItem } from './interfaces/cart-item';
 import { SharingDataService } from './services/sharing-data.service';
 import { Product } from './interfaces/product';
 import Swal from 'sweetalert2';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
